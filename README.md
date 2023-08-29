@@ -18,7 +18,7 @@ File or Folder | Purpose
 ## Next Steps
 
 - Open a new terminal and run `npm start` to start with CDS watch.
-- Open a new terminal and run `npm run dev` to start with qllite in memory.
+- Open a new terminal and run `npm run dev` to start with sql in memory. (It has hana packages included for prod profile)
 - Open a new terminal and run `npm run build` to build. 
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
 - Start adding content, for example, a [db/schema.cds](db/schema.cds).
