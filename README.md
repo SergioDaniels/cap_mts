@@ -1,5 +1,6 @@
 # Getting Started, this is CAP / MTA app that includes routing and UI5 front end.
 # (Learning from several sources).
+.
 
 Welcome to your new project.
 
