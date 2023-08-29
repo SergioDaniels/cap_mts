@@ -29,6 +29,12 @@ modules:
   requires:
   - name: books_html_repo_runtime
   - name: uaa_books
+  - name: books-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
   parameters:
     disk-quota: 256M
     memory: 256M
@@ -39,6 +45,23 @@ modules:
   - name: books_html_repo_host
     parameters:
       content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - sampleapp1.zip
+      name: sampleapp1
+      target-path: resources/
+- name: sampleapp1
+  type: html5
+  path: app/sample-app1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: books-db
   type: com.sap.xs.hdi-container
@@ -62,7 +85,26 @@ resources:
   parameters:
     service: html5-apps-repo
     service-plan: app-host
+- name: books-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: books-destination-service
+    service-plan: lite
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
