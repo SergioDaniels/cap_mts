@@ -1,4 +1,5 @@
-# Getting Started
+# Getting Started, this is CAP app that includes routing and UI5 front end.
+# (Learning from several sources).
 
 Welcome to your new project.
 
@@ -15,7 +16,9 @@ File or Folder | Purpose
 
 ## Next Steps
 
-- Open a new terminal and run `cds watch` 
+- Open a new terminal and run `npm start` to start with CDS watch.
+- Open a new terminal and run `npm run dev` to start with qllite in memory.
+- Open a new terminal and run `npm run build` to build. 
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
 - Start adding content, for example, a [db/schema.cds](db/schema.cds).
 
